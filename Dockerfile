@@ -5,7 +5,7 @@ RUN apt-get update && apt-get upgrade -y
 
 # Install basic utilities
 ARG DEBIAN_FRONTEND=noninteractive
-RUN apt-get install -y sudo wget curl nano git unzip lsb-core php iproute2
+RUN apt-get install -y sudo wget curl nano git unzip php iproute2
 
 
 # Download latest HestiaCP Ubuntu installer using curl
