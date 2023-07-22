@@ -5,7 +5,7 @@ RUN apt-get update && apt-get upgrade -y
 
 # Install basic utilities
 ARG DEBIAN_FRONTEND=noninteractive
-RUN apt-get install -y sudo wget curl nano git unzip lsb-core php
+RUN apt-get install -y sudo wget curl nano git unzip lsb-core php iproute2 apt-utils
 RUN apt remove -y apparmor
 COPY src/start-all-services.sh /usr/src/start-all-services.sh
 RUN chmod +x /usr/src/start-all-services.sh
