@@ -38,13 +38,13 @@ RUN ./patch-hst-install-ubuntu.sh
 RUN touch /var/log/auth.log
 
 # 'lite' version installer silently
-RUN ./hst-install-ubuntu.sh --apache no --phpfpm yes --multiphp no --vsftpd yes --proftpd no --named yes --mysql yes --postgresql no --exim yes --dovecot yes --sieve no --clamav no --spamassassin no --iptables no --fail2ban no --quota no --api yes --interactive no --with-debs no  --port '8083' --hostname 'hestiacp.dev.cc' --email 'info@domain.tld' --password 'password' --lang 'en' --force --interactive no || true
+RUN ./hst-install-ubuntu.sh --apache no --phpfpm yes --multiphp no --vsftpd no --proftpd no --named no --mysql no --postgresql no --exim no --dovecot no --sieve no --clamav no --spamassassin no --iptables no --fail2ban no --quota no --api yes --interactive no --with-debs no  --port '8083' --hostname 'hestiacp.dev.cc' --email 'info@domain.tld' --password 'password' --lang 'en' --force --interactive no || true
 
 # Fix phpPgAdmin issues; (discussion at: https://forum.hestiacp.com/t/project-to-run-hestia-in-docker/)
-RUN unlink /usr/share/phppgadmin/conf/config.inc.php
-RUN cp /etc/phppgadmin/config.inc.php /usr/share/phppgadmin/conf/config.inc.php
-RUN rm /usr/share/phppgadmin/classes/database/Connection.php
-RUN wget -O /usr/share/phppgadmin/classes/database/Connection.php https://raw.githubusercontent.com/Steveorevo/phppgadmin/master/classes/database/Connection.php
+#RUN unlink /usr/share/phppgadmin/conf/config.inc.php
+#RUN cp /etc/phppgadmin/config.inc.php /usr/share/phppgadmin/conf/config.inc.php
+#RUN rm /usr/share/phppgadmin/classes/database/Connection.php
+#RUN wget -O /usr/share/phppgadmin/classes/database/Connection.php https://raw.githubusercontent.com/Steveorevo/phppgadmin/master/classes/database/Connection.php
 
 VOLUME ["/usr/local/hestia", "/home", "/backup"]
 EXPOSE 21 22 25 53 54 80 110 143 443 465 587 993 995 1194 3000 3306 5432 5984 6379 8083 10022 11211 27017 12000-12100
